@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CSS Exemplo box-shadow</title>
+	<style>
+		.sombra1 {
+			border: 1px solid;
+			padding: 10px;
+			box-shadow: 5px 10px;
+		}
+
+		.sombra2 {
+			border: 1px solid;
+			padding: 10px;
+			box-shadow: 5px 10px #888888;
+		}
+
+		.sombra3 {
+			border: 1px solid;
+			padding: 10px;
+			box-shadow: 5px 10px red;
+		}
+		.sombra4 {
+			border: 1px solid;
+			padding: 10px;
+			box-shadow: inset 5px 10px rgb(34, 255, 0);
+		}
+	</style>
+</head>
+<body>
+	<h1>The box-shadow Property</h1>
+	<p>A propriedade box-shadow anexa uma ou mais sombras a um elemento</p>
+	
+	<h2>box-shadow: 5px 10px:</h2>
+	<div class="sombra1">
+	  <p>Um elemento div com uma sombra. O primeiro valor é o deslocamento horizontal e o segundo valor é o deslocamento vertical. A cor da sombra será herdada da cor do texto.</p>
+	</div>
+	
+	<h2>box-shadow: 5px 10px #888888:</h2>
+	<div class="sombra2">
+	  <p>Aqui a cor da sombra é cinza.</p>
+	</div>
+	
+	<h2>box-shadow: 5px 10px red:</h2>
+	<div class="sombra3">
+	  <p>Aqui a cor da sombra é vermelha.</p>
+	</div>
+
+	<h2>box-shadow: inset 5px 10px verde:</h2>
+	<div class="sombra4">
+	  <p>Aqui a cor da sombra é verde inset.</p>
+	</div>
+</body>
+
+</html>
