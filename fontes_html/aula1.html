@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Teste</title>
+    </head>
+    <body> 
+        <form action="https://www.ic.uff.br/cadastro" method="GET">
+            <input type="text" placeholder="Digite seu nome" name="nome">
+            Deseja continuar conectado?
+            <input type="checkbox" value="true" checked name="continuar_conectado">
+            <br>
+            Masculino
+            <input type="radio" name="sexo" value="m" checked>
+            Feminino
+            <input type="radio" name="sexo" value="f">
+            <br>
+            Selecione seu estado:
+            <select name="estado" size="2" multiple>
+                <option value="RJ">RJ</option>
+                <option value="MG" selected>MG</option>
+                <option value="SP">SP</option>
+            </select>
+            <br>
+            Digite sua história:
+            <textarea rows="5" cols="10" name="historia">
+                Aqui é o seu texto
+            </textarea>
+         <input type="submit" text="Enviar">
+         <input type="reset">
+        </form>
+        
+    </body>
+</html>
