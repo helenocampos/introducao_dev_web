@@ -1,0 +1,1 @@
+create table contato (id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1), nome varchar(90), endereco varchar(200), telefone varchar(20));
