@@ -7,7 +7,6 @@ package io.github.helenocampos.somatoriocompletojsp;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;

@@ -4,7 +4,6 @@
  */
 package io.github.helenocampos.exemplologinvulneravel;
 
-import io.github.helenocampos.model.Usuario;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -13,44 +12,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  *
- * @author Heleno
+ * @author HelenoCampos
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/login"})
-public class LoginServlet extends HttpServlet {
-
-    Connection conn = null;
-
-    @Override
-    public void init() throws ServletException {
-        iniciarConexao();
-    }
-
-    private void iniciarConexao() {
-        try {
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/exemplologin", "root", "123");
-        } catch (SQLException ex) {
-            System.out.println("Não foi possível conectar ao banco de dados.");
-        }
-    }
-
-    @Override
-    public void destroy() {
-        try {
-            if (conn != null) {
-                conn.close();
-            }
-        } catch (SQLException ex) {
-            System.out.println("Não foi possível fechar a conexão com o banco de dados.");
-        }
-    }
+@WebServlet(name = "LogoutServlet", urlPatterns = {"/logout"})
+public class LogoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -64,36 +32,14 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        Usuario usuarioLogado = null;
-        RequestDispatcher dispatcherSucesso = request.getRequestDispatcher("/WEB-INF/dashboard.jsp");
-        RequestDispatcher dispatcherFalha = request.getRequestDispatcher("login.jsp");
-        if(username != null && password != null){
-            try{
-                String query = "SELECT * FROM usuarios WHERE username = '"+username+"' AND password = '"+password+"'";
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(query);
-                while(rs.next()){
-                    usuarioLogado = new Usuario(rs.getInt("id"), rs.getString("username"), rs.getString("password"));
-                }
-            } catch(SQLException ex){
-                System.out.println("Problema ao realizar login.");
-            }
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
         }
-        
-        if(usuarioLogado != null){
-            HttpSession session = request.getSession();
-            session.setMaxInactiveInterval(15*60); // 15 minutos
-            session.setAttribute("usuario", usuarioLogado);
-            dispatcherSucesso.forward(request, response);
-        }else{
-            request.setAttribute("erro", "Usuário/senha incorretos");
-            dispatcherFalha.forward(request, response);
-        }
-    }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+        dispatcher.forward(request, response);
 
-    
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
