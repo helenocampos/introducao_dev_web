@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <form action="https://www.uff.br" method="GET">
+            Nome: <input type="text" size="40" name="nome" id="name" placeholder="Digite seu nome">
+            <br>
+            Senha: <input type="password" size="40" name="pass">
+            <br>
+            Interesses:
+            <ul>
+                <li><input type="checkbox" name="interesse" value="futebol" checked>Futebol<br></li>
+                <li>
+                    <input type="checkbox" name="interesse" value="cinema">Cinema<br>
+                </li>
+                <li><input type="checkbox" name="interesse" values="artes">Artes<br></li>
+            </ul>
+            <br>
+            Sexo:
+            <br> 
+            <input type="radio" name="sexo" value="masculino" checked> Masculino <br>
+            <input type="radio" name="sexo" value="feminino"> Feminino <br>
+            <input type="radio" name="sexo" valor="outro"> Outro <br>
+
+            <br>
+            Curso: 
+            <br>
+            <select name="curso" size="1">
+                <option value="si">Sistemas de informação</option>
+                <option value="cc" selected>Ciência da Computação</option>
+                <option value="outro">Outro</option>
+            </select>
+            
+            <br>
+            Biografia: <br>
+            <textarea name="biografia" cols="40" rows="10">
+
+            </textarea>
+            <br>
+            
+            <input type="submit" value="Enviar formulario">
+            <br>
+            <input type="reset">
+        </form>
+    </body>
+</html>
